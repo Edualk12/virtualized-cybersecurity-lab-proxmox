@@ -96,6 +96,14 @@ Router(config)# ip route [destination-network] [subnet-mask] [next-hop-ip]
 
 ## Key Skills Demonstrated
 
+## Problems Encountered
+
+- The Problem: I could ping outward from my VMs to my physical PC, and I could ping the pfSense WAN port from the outside, but I couldn't actually ping into the internal VM network from my physical PC.
+
+- The Root Cause: My main home router was completely blind to the VM subnet. When my PC tried to talk to a VM, the router didn't even consider the pfSense WAN interface as an option—it just assumed the traffic was meant for the internet and dropped it.
+
+- The Fix: I added a static route on my main home router telling it exactly how to find the VM subnet via the pfSense WAN IP, and opened up a firewall rule on pfSense to let the traffic cross over to the LAN.
+
 ## Lessons Learned
 
 ## Future Improvements

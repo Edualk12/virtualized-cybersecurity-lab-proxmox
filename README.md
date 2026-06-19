@@ -85,6 +85,7 @@ I've configured different Virtual Machines for different purposes in the nextwor
 | Security Onion | Security Onion | IDS/IPS, network monitoring, and threat detection | 4 Cores | 8 GB | 100 GB |
 | PC-1 (Victim PC) | Windows 10 | User workstation and attack target | 2 Cores | 2 GB | 32 GB |
 | Splunk Server | Ubuntu Server | SIEM, log collection, and security analysis | 2 Cores | 2 GB | 32 GB |
+| Metasploitable 2 | Linux | Attack Target | 1 Core | 2 GB | 2 GB |
 
 ## Virtual Machines
 

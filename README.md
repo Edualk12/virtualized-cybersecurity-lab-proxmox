@@ -36,21 +36,21 @@
 - Vlans
 
 
-## ATTACKS USING KALI LINUX
+## Attack Scenarios and Detection Analysis
 
 ![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap.png)
 
 # Attack Scenarios
 
-## Attack 1: Nmap Reconnaissance & Detection
+### Attack 1: Nmap Reconnaissance & Detection
 
 - [Attack 1: Nmap Reconnaissance](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack1)
 
-## Attack 2: SQL Injection Against OWASP Juice Shop
+### Attack 2: SQL Injection Against OWASP Juice Shop
 
 - [Attack 2: Vulnerability Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack2)
 
-## Attack 3: The NTDS.dit Shadow Copy Theft (AD Identity Theft).
+### Attack 3: The NTDS.dit Shadow Copy Theft (AD Identity Theft).
 
 - [Attack 3: Post-Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack3)
 
@@ -108,8 +108,6 @@ Contains all the information of all its client PCs every user identity, password
 
 Metasploitable 2 is an intentionally vulnerable Linux virtual machine designed as a legal, safe training ground for security professionals to practice penetration testing and vulnerability exploitation.
 
-## Attack Scenarios and Detection Analysis
-
 ## Network Segmentation and Firewall Configuration
 
 ### Router Static Route Config
@@ -138,10 +136,6 @@ I configured vlans for the different virtual machine for added security and mana
 | OPT4 | SPANPORT | vtnet1.55 | Mirrored traffic interface for Security Onion network monitoring |
 
 
-
-
-
-  
 ## SIEM and IDS/IPS Dashboards
 
 

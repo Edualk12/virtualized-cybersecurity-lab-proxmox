@@ -13,14 +13,12 @@
 ![SIEM](https://img.shields.io/badge/SIEM-2D3142?style=for-the-badge&logo=splunk&logoColor=white)
 ![Metasploitable 2](https://img.shields.io/badge/Metasploitable_2-black?style=for-the-badge&logo=linux&logoColor=white)
 
-## Project Overview
-
-## Network Architecture
+## Network / Security Architecture
 
 ![diagram](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/CYBER%20HOMELAB.png)
 
 
-Skills Demonstrated
+## Skills Demonstrated
 - Firewall configuration
 - Vlan configuration
 - Hypervisor Configuration and Administration
@@ -37,9 +35,11 @@ Skills Demonstrated
 - Splunk
 - Vlans
 
-## Virtual Infrastructure
 
 ### Dell Optiplex 3050 
+
+Using a Mini-PC for my Proxmox VE is the most practical and common choice as it is power efficient and the specs you can get at a relatively cheaper price.
+
 
 | CPU | Core # |
 |-----|-----|
@@ -55,7 +55,11 @@ Skills Demonstrated
 
 ## PROXMOX VE (VIRTUAL MACHINE RESOURCE ALLOCATION)
 
-| Virtual Machine | Operating System | Role/Purpose | vCPU | RAM | Storage |
+I've installed proxmox VM as my Hypervisor as it is free and open source and also multiple different features to configure and to learn more about hypervisors and setting up virtual machines.
+
+I've configured different Virtual Machines for different purposes in the nextwork and also their specifications and optimized it to fit my limited resources as shown below
+
+| Virtual Machine | Operating System | Role/Purpose | CPU | RAM | Storage |
 |-----------------|------------------|--------------|------|-----|---------|
 | Proxmox VE | Proxmox VE | Hypervisor hosting the virtual cybersecurity lab | 1 Core | 1 GB | - |
 | pfSense | pfSense | Firewall, router, and network segmentation | 1 Core | 2 GB | 8 GB |
@@ -64,8 +68,32 @@ Skills Demonstrated
 | PC-1 (Victim PC) | Windows 10 | User workstation and attack target | 2 Cores | 2 GB | 32 GB |
 | Splunk Server | Ubuntu Server | SIEM, log collection, and security analysis | 2 Cores | 2 GB | 32 GB |
 
+## Virtual Machines
+
+
+### SECURITY ONION
+
+ Using Security Onion is one of the most versatile and useful SIEM available due to the different tools and features present but the limited resources I have limited me to put the majority of my computing Resources to it.
+
+### Splunk
+
+Used for monitoring and logging the raw data coming from the Active Directory to allow real time detection of attacks.
+
+### Active Directory 
+
+Contains all the information of all its client PCs every user identity, password, and access privilege. So it is a primary target that is why it is included for Pentesting.
+
+### Metasploitable 2
+
+Metasploitable 2 is an intentionally vulnerable Linux virtual machine designed as a legal, safe training ground for security professionals to practice penetration testing and vulnerability exploitation.
+
+## Attack Scenarios and Detection Analysis
 
 ## Network Segmentation and Firewall Configuration
+
+### Router Static Route Config
+
+Due to my Attacker Kali Linux machine being in a separate "network" , I need to cofigure a static router coming from my Kali Linux VM to the different VLANs in the virtual network.
 
 ```
 Router> enable
@@ -73,10 +101,9 @@ Router# configure terminal
 Router(config)# ip route [destination-network] [subnet-mask] [next-hop-ip]
 ```
 
+## PFSense Vlan Configuration
 
-
-
-### PFSense Vlan Configuration
+I configured vlans for the different virtual machine for added security and manageability. Configuring pfsense firewall is straightforward after the initial setup using the Web interface.
 
 ![pfsense](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/PFsense.png)
 
@@ -89,19 +116,32 @@ Router(config)# ip route [destination-network] [subnet-mask] [next-hop-ip]
 | OPT3 | SPLUNK | 192.168.45.1/24 | SIEM server and log analysis network |
 | OPT4 | SPANPORT | vtnet1.55 | Mirrored traffic interface for Security Onion network monitoring |
 
-## Security Monitoring Architecture
+## ATTACKS USING KALI LINUX
 
 
-### SECURITY ONION
 
-Testing:
-tcp dump
+![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap.png)
 
-## Attack Scenarios and Detection Analysis
+# Attack Scenarios
 
+## Attack 1: Nmap Reconnaissance & Detection
+
+- [Attack 1: Nmap Reconnaissance](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack1)
+
+## Attack 2: SQL Injection Against OWASP Juice Shop
+
+- [Attack 2: Vulnerability Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack2)
+
+## Attack 3: The NTDS.dit Shadow Copy Theft (AD Identity Theft).
+
+- [Attack 3: Post-Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack3)
+
+
+
+
+  
 ## SIEM and IDS/IPS Dashboards
 
-## Key Skills Demonstrated
 
 ## Problems Encountered
 
@@ -111,8 +151,8 @@ tcp dump
 
 - The Fix: I added a static route on my main home router telling it exactly how to find the VM subnet via the pfSense WAN IP, and opened up a firewall rule on pfSense to let the traffic cross over to the LAN.
 
-
 - metapsplitable is not compatible with peroxmox 
+
 ## Lessons Learned
 
 ## Future Improvements

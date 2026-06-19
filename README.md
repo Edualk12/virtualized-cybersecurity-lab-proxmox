@@ -11,12 +11,13 @@
 ![Virtual Networking](https://img.shields.io/badge/Virtual_Networking-2496ED?style=for-the-badge&logo=cisco&logoColor=white)
 ![IDS/IPS](https://img.shields.io/badge/IDS%2FIPS-D72638?style=for-the-badge&logo=shieldsdotio&logoColor=white)
 ![SIEM](https://img.shields.io/badge/SIEM-2D3142?style=for-the-badge&logo=splunk&logoColor=white)
+![Metasploitable 2](https://img.shields.io/badge/Metasploitable_2-black?style=for-the-badge&logo=linux&logoColor=white)
 
 ## Project Overview
 
 ## Network Architecture
 
-
+![diagram](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/CYBER%20HOMELAB.png)
 
 
 Skills Demonstrated
@@ -90,6 +91,12 @@ Router(config)# ip route [destination-network] [subnet-mask] [next-hop-ip]
 
 ## Security Monitoring Architecture
 
+
+### SECURITY ONION
+
+Testing:
+tcp dump
+
 ## Attack Scenarios and Detection Analysis
 
 ## SIEM and IDS/IPS Dashboards
@@ -104,6 +111,8 @@ Router(config)# ip route [destination-network] [subnet-mask] [next-hop-ip]
 
 - The Fix: I added a static route on my main home router telling it exactly how to find the VM subnet via the pfSense WAN IP, and opened up a firewall rule on pfSense to let the traffic cross over to the LAN.
 
+
+- metapsplitable is not compatible with peroxmox 
 ## Lessons Learned
 
 ## Future Improvements

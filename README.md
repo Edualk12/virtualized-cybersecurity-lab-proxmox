@@ -36,6 +36,26 @@
 - Vlans
 
 
+## ATTACKS USING KALI LINUX
+
+![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap.png)
+
+# Attack Scenarios
+
+## Attack 1: Nmap Reconnaissance & Detection
+
+- [Attack 1: Nmap Reconnaissance](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack1)
+
+## Attack 2: SQL Injection Against OWASP Juice Shop
+
+- [Attack 2: Vulnerability Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack2)
+
+## Attack 3: The NTDS.dit Shadow Copy Theft (AD Identity Theft).
+
+- [Attack 3: Post-Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack3)
+
+
+
 ### Dell Optiplex 3050 
 
 Using a Mini-PC for my Proxmox VE is the most practical and common choice as it is power efficient and the specs you can get at a relatively cheaper price.
@@ -116,25 +136,6 @@ I configured vlans for the different virtual machine for added security and mana
 | OPT3 | SPLUNK | 192.168.45.1/24 | SIEM server and log analysis network |
 | OPT4 | SPANPORT | vtnet1.55 | Mirrored traffic interface for Security Onion network monitoring |
 
-## ATTACKS USING KALI LINUX
-
-
-
-![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap.png)
-
-# Attack Scenarios
-
-## Attack 1: Nmap Reconnaissance & Detection
-
-- [Attack 1: Nmap Reconnaissance](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack1)
-
-## Attack 2: SQL Injection Against OWASP Juice Shop
-
-- [Attack 2: Vulnerability Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack2)
-
-## Attack 3: The NTDS.dit Shadow Copy Theft (AD Identity Theft).
-
-- [Attack 3: Post-Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack3)
 
 
 

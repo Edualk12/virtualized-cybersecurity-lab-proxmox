@@ -36,11 +36,8 @@
 - Vlans
 
 
-## Attack Scenarios and Detection Analysis
 
-![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap.png)
-
-# Attack Scenarios
+# Attack Scenarios and Detection Analysis
 
 ### Attack 1: Nmap Reconnaissance & Detection
 

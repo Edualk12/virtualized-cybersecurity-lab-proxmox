@@ -55,6 +55,7 @@
 - [Attack 3: Post-Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack3)
 
 
+## PC SPECS
 
 ### Dell Optiplex 3050 
 

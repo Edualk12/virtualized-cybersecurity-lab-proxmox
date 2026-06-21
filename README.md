@@ -12,6 +12,7 @@
 ![IDS/IPS](https://img.shields.io/badge/IDS%2FIPS-D72638?style=for-the-badge&logo=shieldsdotio&logoColor=white)
 ![SIEM](https://img.shields.io/badge/SIEM-2D3142?style=for-the-badge&logo=splunk&logoColor=white)
 ![Metasploitable 2](https://img.shields.io/badge/Metasploitable_2-black?style=for-the-badge&logo=linux&logoColor=white)
+![Nmap](https://img.shields.io/badge/Nmap-0078D7?style=for-the-badge&logo=nmap&logoColor=white)
 
 ## Network / Security Architecture
 
@@ -145,7 +146,9 @@ I configured vlans for the different virtual machine for added security and mana
 
 - The Fix: I added a static route on my main home router telling it exactly how to find the VM subnet via the pfSense WAN IP, and opened up a firewall rule on pfSense to let the traffic cross over to the LAN.
 
-- metapsplitable is not compatible with peroxmox 
+- metapsplitable is not compatible with peroxmox
+
+- Limited resources for the different virtual machines
 
 ## Lessons Learned
 

@@ -3,12 +3,12 @@
 Brief description of the attack goal.
 
 ### Environment
-- Attacker: Kali Linux (192.168.X.X)
-- Target: OWASP Juice Shop (192.168.X.X)
+- Attacker: Kali Linux (192.168.1.89)
+- Target: Victim Network (192.168.35.0/24)
 - Monitoring: Security Onion, Splunk
 
 ### MITRE ATT&CK Mapping
-- TXXXX - Technique Name
+- T1046 - Network Service Scanning
 
 ### Attack Execution
 #### Reconnaissance

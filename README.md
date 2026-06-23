@@ -132,7 +132,12 @@ I configured vlans for the different virtual machine for added security and mana
 | OPT1 | OPT1 | 192.168.25.1/24 | Additional internal network segment |
 | OPT2 | VICTIM_NETWORK_LAN | 192.168.35.1/24 | Victim machines and attack target network |
 | OPT3 | SPLUNK | 192.168.45.1/24 | SIEM server and log analysis network |
-| OPT4 | SPANPORT | vtnet1.55 | Mirrored traffic interface for Security Onion network monitoring |
+
+## Configuring Security Onion Monitoring Interface using Open V Switch
+
+Based from my experience that i have encountered during creating the netwokr is that I was not able to use the built in span port configuration from pfsense so based on my research one of the most common setup is to use Open Vswitch for connection the monitoring interface of Security Onion to the Virtual Machines. So I created a separate virutal interface for my network (vmbr3) and for the sniffer interface is (vmbr2) so i will be mirroring the traffic from thr virtual bridge 3 (vmbr3) to the sniffer inteface.
+
+![pfsense](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/spanport.png)
 
 
 ## SIEM and IDS/IPS Dashboards

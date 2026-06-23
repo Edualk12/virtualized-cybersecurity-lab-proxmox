@@ -139,6 +139,38 @@ Based from my experience that i have encountered during creating the netwokr is 
 
 ![pfsense](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/spanport.png)
 
+``` auto lo
+iface lo inet loopback
+
+auto enp1s0
+iface enp1s0 inet manual
+
+iface wlp2s0 inet manual
+
+auto vmbr0
+iface vmbr0 inet static
+        address 192.168.1.12/24
+        gateway 192.168.1.1
+        bridge-ports enp1s0
+        bridge-stp off
+        bridge-fd 0
+        bridge-vlan-aware yes
+        bridge-vids 2-4094
+
+auto vmbr1
+iface vmbr1 inet manual
+        ovs_type OVSBridge
+
+auto vmbr2
+iface vmbr2 inet manual
+        ovs_type OVSBridge
+        ovs_ports patch-to-vmbr3 tap102i1
+
+
+auto vmbr3
+iface vmbr3 inet manual
+        ovs_type OVSBridge
+```
 
 ## SIEM and IDS/IPS Dashboards
 

@@ -38,7 +38,7 @@
 
 
 
-# Attack Scenarios and Detection Analysis
+# Sample Attack Scenarios and Detection Analysis
 
 ### Attack 1: Nmap Reconnaissance & Detection
 

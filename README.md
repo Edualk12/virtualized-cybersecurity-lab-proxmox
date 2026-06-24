@@ -46,11 +46,11 @@
 
 ### Attack 2: WIP
 
-- [Attack 2: Vulnerability Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack2)
+- [Attack 2: Vulnerability Exploitation]()
 
 ### Attack 3: WIP
 
-- [Attack 3: Post-Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack3)
+- [Attack 3: Post-Exploitation]()
 
 
 ## PC SPECS

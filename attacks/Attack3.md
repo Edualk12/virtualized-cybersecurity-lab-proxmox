@@ -1,3 +1,4 @@
+### Attack 3: The NTDS.dit Shadow Copy Theft (AD Identity Theft).
 
 ### Objective
 Brief description of the attack goal.

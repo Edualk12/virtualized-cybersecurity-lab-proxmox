@@ -226,9 +226,6 @@ Host is up (0.00066s latency).
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20o%20alert.png)
 
 
- ![alert]()
- ![alert]()
-
 
 
 - Relevant Event IDs

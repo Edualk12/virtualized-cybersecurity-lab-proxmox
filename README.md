@@ -139,6 +139,9 @@ Based from my experience that i have encountered during creating the netwokr is 
 
 ![pfsense](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/spanport.png)
 
+
+
+### Proxmox Network Interface Configuration
 ``` auto lo
 iface lo inet loopback
 
@@ -170,6 +173,28 @@ iface vmbr2 inet manual
 auto vmbr3
 iface vmbr3 inet manual
         ovs_type OVSBridge
+```
+
+## Port mirroring from vmbr3 to vmbr2
+
+### Patching vmbr2 and 3
+```
+  # Connect vmbr3 to vmbr2
+ovs-vsctl add-port vmbr3 patch-to-vmbr2 \
+  -- set Interface patch-to-vmbr2 type=patch options:peer=patch-to-vmbr3
+
+# Connect vmbr2 back to vmbr3
+ovs-vsctl add-port vmbr2 patch-to-vmbr3 \
+  -- set Interface patch-to-vmbr3 type=patch options:peer=patch-to-vmbr2
+```
+
+### Mirroring Vmbr3 to Vmbr2
+
+```
+  ovs-vsctl -- set bridge vmbr3 mirrors=@m \
+  -- --id=@m create mirror name=bridge-span \
+  select_all=true \
+  output_port=$(ovs-vsctl get port patch-to-vmbr2 _uuid)
 ```
 
 ## SIEM and IDS/IPS Dashboards

@@ -244,8 +244,16 @@ Host is up (0.00066s latency).
 - Network signatures
 
 ### Mitigation
-- Immediate containment
-- Long-term security improvements
+
+- Restrict unnecessary open ports and services.
+- Implement VLAN segmentation to limit network visibility.
+- Apply firewall rules to control access between hosts.
+- Restrict administrative services to trusted systems.
+- Monitor reconnaissance activity using Security Onion and Suricata.
 
 ### Lessons Learned
-- Key takeaways from the attack
+This exercise showed how reconnaissance activity can be detected in a monitored network. It helped me understand how traffic flows through pfSense, Open vSwitch, and Security Onion, and how IDS alerts are generated from real attack activity.
+
+-Validated end-to-end attack detection using Security Onion.
+-Confirmed proper VLAN and SPAN configuration.
+-Improved understanding of network monitoring and intrusion detection.

@@ -44,11 +44,11 @@
 
 - [Attack 1: Nmap Reconnaissance](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack1)
 
-### Attack 2: SQL Injection Against OWASP Juice Shop
+### Attack 2: WIP
 
 - [Attack 2: Vulnerability Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack2)
 
-### Attack 3: The NTDS.dit Shadow Copy Theft (AD Identity Theft).
+### Attack 3: WIP
 
 - [Attack 3: Post-Exploitation](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack3)
 

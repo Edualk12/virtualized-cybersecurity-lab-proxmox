@@ -14,25 +14,32 @@ To test the cybersecurity lab's functionality and test different attack methodol
 
 ### 1.) Check for Live Systems
 - Commands used
+  ```
+      nmap -sn 192.168.35.0/24
+      nmap -PS 192.168.35.0/24
+  ```
+  
 - Findings
 - Screenshot
 
 ### 2.) Check for Open Ports
 - Commands used
-- Findings
-- Screenshot
+  ```
+    nmap -sT 192.168.35.0/24
+    nmap -sS 192.168.35.0/24
+    nmap -p 22,80,443 192.168.35.0/24
+  ```
   
-### 3.) Check the Operating System
-- Commands used
 - Findings
 - Screenshot
 
- ### 4.) Perform Banner Grabbing
+
+ ### 3.) Perform Banner Grabbing
 - Commands used
 - Findings
 - Screenshot
    
- ### 5.) Scan for Vulnerabilties
+ ### 4.) Scan for Vulnerabilties
 - Commands used
 - Findings
 - Screenshot

@@ -9,6 +9,8 @@ To test the cybersecurity lab's functionality and test different attack methodol
 - Attacker: Kali Linux (192.168.1.89)
 - Target: Victim Network (192.168.35.0/24)
 - Monitoring: Security Onion, Splunk
+- Tools: Nmap, Zenmap
+
 
 ## Attack Execution
 
@@ -38,7 +40,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 4.47 seconds
 
 ```
  #### Findings
-  The nmap scan was able to detect four active host in the /24 subnet network, with this I am able to go onto the second step.
+  The nmap scan was able to detect four active host in the 192.168.35.0/24 subnet network, with this I am able to go onto the second step.
 
   
 ### 2.) Check for Open Ports
@@ -51,7 +53,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 4.47 seconds
   ```
 
 #### Ouput (Nmap -sT)
- This output shows that the TCP connect scan discovered two live hosts on the network with vulnerable open entry points. Host 192.168.35.12 is exposing web and remote shell capabilities via SSH, HTTP, and HTTPS, while host 192.168.35.50 is exposing a Remote Desktop (RDP) management port.
+ This command is used to see if there are any live host with open port that can be used as vulnerable entry points for attack.
 ```
 ┌──(klaude㉿klaudekali)-[~]
 └─$ nmap -sT 192.168.35.0/24
@@ -98,7 +100,7 @@ PORT    STATE SERVICE
 Nmap done: 256 IP addresses (4 hosts up) scanned in 9.24 seconds
 ```
 #### Findings (nmap -sT)
-Based on the command I used which is a TCP scan command it was able to perform the 3 way handshake with some of the ports of the different hosts and other ports refused to connect which means the ports of the hosts are closed.
+This findings shows that the TCP connect scan discovered two live hosts on the network with vulnerable open entry points. Host 192.168.35.12 is exposing web and remote shell capabilities via SSH, HTTP, and HTTPS, while host 192.168.35.50 is exposing a Remote Desktop (RDP) management port.
 
 
 
@@ -208,7 +210,7 @@ Same as Before It was able to find the inputed ports (22,80,443) which for the m
   
 #### Output (nmap -sV)
 
-This command scans all 254 active network hosts in the 192.168.35.0/24 subnet to identify open ports and determine their exact application names and software versions. It also extracts the raw welcome text ("banners") broadcasted by those services, creating a detailed profile that will instantly trigger alerts in security monitoring tools like Security Onion.
+This command scans all 254 active network hosts in the 192.168.35.0/24 subnet to identify open ports and determine their exact application names and software versions. It also extracts the raw welcome text ("banners") broadcasted by those services.
 
 ```
 ┌──(klaude㉿klaudekali)-[~]
@@ -268,6 +270,9 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 74.03 seconds
 #### Findings
 This version detection scan uses Nmap Scripting Engine (NSE) scripts to dig deeper, specifically running the banner script to grab the raw welcome text from open services. These automated NSE scripts act like plugins that extend Nmap's capability beyond basic port checking, allowing it to accurately unmask an Nginx gateway, a Windows Active Directory Domain Controller, and a host on this subnet.
 
+
+#### Output
+This command is used specifically to see what type of Operating do the hosts use which can be later be utilized to what kind of exploit should be used against each host in the subnet.
 ```
   ┌──(klaude㉿klaudekali)-[~]
 └─$ nmap -O 192.168.35.0/24
@@ -333,6 +338,8 @@ OS detection performed. Please report any incorrect results at https://nmap.org/
 Nmap done: 256 IP addresses (4 hosts up) scanned in 15.77 seconds
 
 ```
+#### Findings
+This shows some of the open port and services that are available in the previous command and also the details of the operating system being used such as Windows 10, Linux Ubuntu, Windows 10 2022 Server, and Free BSD which matched the OS that is included in the network topology.
 
    
  ### 4.) Scan for Vulnerabilties
@@ -341,25 +348,25 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 15.77 seconds
     nmap -sV --script=vuln 192.168.35.0/24
   ```
   
-- Findings
-- Screenshot
-   
-
+#### Output
+   This is another example of a Nmap Script Engine which in this case automates to look for any vulnerabilities on the host.Th is command weaponizes Nmap to look for known security flaws, bugs, and misconfigurations.  
 ```    
+┌──(klaude㉿klaudekali)-[~]
+└─$ nmap -sV --script=vuln 192.168.35.0/24 
+
 Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-25 03:31 +0800
 Nmap scan report for 192.168.35.1
-Host is up (0.0012s latency).
+Host is up (0.00099s latency).
 Not shown: 997 filtered tcp ports (no-response)
 PORT    STATE SERVICE  VERSION
 53/tcp  open  domain   (generic dns response: REFUSED)
 80/tcp  open  http     nginx
-|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
-|_http-dombased-xss: Couldn't find any DOM based XSS.
 |_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
 443/tcp open  ssl/http nginx
-|_http-csrf: Couldn't find any CSRF vulnerabilities.
-|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
 |_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-sql-injection: ERROR: Script execution failed (use -d to debug)
 | http-fileupload-exploiter: 
 |   
 |     Couldn't find a file-type field.
@@ -367,19 +374,20 @@ PORT    STATE SERVICE  VERSION
 |     Couldn't find a file-type field.
 |   
 |_    Couldn't find a file-type field.
-|_http-sql-injection: ERROR: Script execution failed (use -d to debug)
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
 | http-enum: 
 |_  /manifest.json: Manifest JSON File
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port53-TCP:V=7.99%I=7%D=6/25%Time=6A3C30B0%P=x86_64-pc-linux-gnu%r(DNSV
+SF-Port53-TCP:V=7.99%I=7%D=6/25%Time=6A3D2FF0%P=x86_64-pc-linux-gnu%r(DNSV
 SF:ersionBindReqTCP,E,"\0\x0c\0\x06\x81\x05\0\0\0\0\0\0\0\0");
 
 Nmap scan report for 192.168.35.10
-Host is up (0.00061s latency).
+Host is up (0.00062s latency).
 Not shown: 987 closed tcp ports (reset)
 PORT     STATE SERVICE       VERSION
 53/tcp   open  domain        Simple DNS Plus
-88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-06-24 19:31:55Z)
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-06-25 13:40:59Z)
 135/tcp  open  msrpc         Microsoft Windows RPC
 139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
 389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: KLAUDE.local, Site: Default-First-Site-Name)
@@ -390,29 +398,63 @@ PORT     STATE SERVICE       VERSION
 3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: KLAUDE.local, Site: Default-First-Site-Name)
 3269/tcp open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: KLAUDE.local, Site: Default-First-Site-Name)
 5357/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
 |_http-dombased-xss: Couldn't find any DOM based XSS.
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-csrf: Couldn't find any CSRF vulnerabilities.
-|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
 5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
 |_http-server-header: Microsoft-HTTPAPI/2.0
 |_http-csrf: Couldn't find any CSRF vulnerabilities.
-|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
 |_http-dombased-xss: Couldn't find any DOM based XSS.
 Service Info: Host: KLAUDE-DOMAIN-C; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
 |_smb-vuln-ms10-054: false
-|_smb-vuln-ms10-061: Could not negotiate a connection:SMB: Failed to receive bytes: ERROR
 |_samba-vuln-cve-2012-1182: Could not negotiate a connection:SMB: Failed to receive bytes: ERROR
+|_smb-vuln-ms10-061: Could not negotiate a connection:SMB: Failed to receive bytes: ERROR
 
 Nmap scan report for 192.168.35.11
-Host is up (0.00066s latency).
+Host is up (0.00062s latency).
+All 1000 scanned ports on 192.168.35.11 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+
+Nmap scan report for 192.168.35.12
+Host is up (0.00079s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_smb-vuln-ms10-054: false
+|_samba-vuln-cve-2012-1182: Could not negotiate a connection:SMB: Failed to receive bytes: ERROR
+|_smb-vuln-ms10-061: Could not negotiate a connection:SMB: Failed to receive bytes: ERROR
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 256 IP addresses (4 hosts up) scanned in 217.00 seconds
+                                                                    
 ```
+#### Findings
+This nmap scan script was the longest one to complete as it uses different components to see what vulnerabilities are present but the scan was not able to find any immediate high-severity exploits or unpatched system vulnerabilities as it indicates in the attack output being false and failed to see any XSS and CSRF vulnerabilities. But there are open ports in the Active Directory Host:
+
+- Port 88 (Kerberos): This handles network authentication.
+- Port 389 & 636 (LDAP/LDAPS): This holds the database of all users, groups, and computers. 
+- Port 445 (SMB): This is used for file sharing and network communication. 
+- Port 5985 (WinRM): This is the Windows Remote Management port. 
+
+
+### Zenmap Network Map Output
+Using Zenmap to able to be able to visualize the network being scanned.
+
+![zenmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/zenmap%20scan.png)
 
 
 
-### Detection & Analysis
+## Detection & Analysis
+
 - Security Onion alerts
 
 - nmap sn alert

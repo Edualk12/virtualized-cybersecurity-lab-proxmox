@@ -452,43 +452,41 @@ Using Zenmap to able to be able to visualize the network being scanned.
 ![zenmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/zenmap%20scan.png)
 
 
-
 ## Detection & Analysis
 
-- Security Onion alerts
+### Security Onion alerts
 
-- nmap sn alert
+#### Alert Tab Screenshot
+![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/sample%20ss%20secu%20onion.png)
 
-- st alert
+
+
+### Alert for nmap -sN 192.168.35.0/24
+![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sn%20alert.png)
+
+
+
+
+### Alert for nmap -st 192.168.35.0/24
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20st%20alert.png)
 
-- ss alert
+
+
+### Alert for nmap -sS 192.168.35.0/24
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20ss%20alert.png)
 
-- sv alert
-  
+
+
+
+### Alert for nmap -sV 192.168.35.0/24
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sv%20script%20alert.png)
 
- - o alert
+
+
+
+### Alert for nmap -O 192.168.35.0/24
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20o%20alert.png)
 
-
-
-
-- Relevant Event IDs
-
-
-
-
-- Network traffic evidence
-
-
-
-### Indicators of Compromise (IoCs)
-- Source IP
-- Destination IP
-- Suspicious processes/files
-- Network signatures
 
 ### Mitigation
 

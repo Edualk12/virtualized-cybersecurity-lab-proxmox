@@ -54,14 +54,6 @@
 
 - [Attack 1: Nmap Reconnaissance](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/attacks/Attack1.md)
 
-### Attack 2: WIP
-
-- []()
-
-### Attack 3: WIP
-
-- []()
-
 
 ## PC SPECS
 

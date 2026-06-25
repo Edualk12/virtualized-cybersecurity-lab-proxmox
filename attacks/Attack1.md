@@ -462,29 +462,197 @@ Using Zenmap to able to be able to visualize the network being scanned.
 
 
 ### Alert for nmap -sN 192.168.35.0/24
+
+# Security Onion Incident Report
+
+| Attribute | Value |
+| :--- | :--- |
+| **Timestamp** | ` ` |
+| **Alert Signature** | ` ` |
+| **Category** | ` ` |
+| **Severity** | ` ` |
+
+---
+
+## Network Data
+* **Source IP / Port:** ` ` : ` `
+* **Destination IP / Port:** ` ` : ` `
+* **Protocol:** ` `
+* **Interface:** ` `
+
+---
+
+## Log & Payload Extract
+
+### Decoded Network Data
+```http
+
+```
+
+### Forensic Context
+* **Log Path:** ` `
+* **Capture File:** ` `
+* **Flow ID:** ` `
+* **Rule UUID:** ` `
+* **Rule Reference:** ` `
+
 ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sn%20alert.png)
 
 
 
 
 ### Alert for nmap -st 192.168.35.0/24
+
+# Security Onion Incident Report
+
+| Attribute | Value |
+| :--- | :--- |
+| **Timestamp** | ` ` |
+| **Alert Signature** | ` ` |
+| **Category** | ` ` |
+| **Severity** | ` ` |
+
+---
+
+## Network Data
+* **Source IP / Port:** ` ` : ` `
+* **Destination IP / Port:** ` ` : ` `
+* **Protocol:** ` `
+* **Interface:** ` `
+
+---
+
+## Log & Payload Extract
+
+### Decoded Network Data
+```http
+
+```
+
+### Forensic Context
+* **Log Path:** ` `
+* **Capture File:** ` `
+* **Flow ID:** ` `
+* **Rule UUID:** ` `
+* **Rule Reference:** ` `
+
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20st%20alert.png)
 
 
 
 ### Alert for nmap -sS 192.168.35.0/24
+
+# Security Onion Incident Report
+
+| Attribute | Value |
+| :--- | :--- |
+| **Timestamp** | ` ` |
+| **Alert Signature** | ` ` |
+| **Category** | ` ` |
+| **Severity** | ` ` |
+
+---
+
+## Network Data
+* **Source IP / Port:** ` ` : ` `
+* **Destination IP / Port:** ` ` : ` `
+* **Protocol:** ` `
+* **Interface:** ` `
+
+---
+
+## Log & Payload Extract
+
+### Decoded Network Data
+```http
+
+```
+
+### Forensic Context
+* **Log Path:** ` `
+* **Capture File:** ` `
+* **Flow ID:** ` `
+* **Rule UUID:** ` `
+* **Rule Reference:** ` `
+
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20ss%20alert.png)
 
 
 
 
 ### Alert for nmap -sV 192.168.35.0/24
+# Security Onion Incident Report
+
+| Attribute | Value |
+| :--- | :--- |
+| **Timestamp** | ` ` |
+| **Alert Signature** | ` ` |
+| **Category** | ` ` |
+| **Severity** | ` ` |
+
+---
+
+## Network Data
+* **Source IP / Port:** ` ` : ` `
+* **Destination IP / Port:** ` ` : ` `
+* **Protocol:** ` `
+* **Interface:** ` `
+
+---
+
+## Log & Payload Extract
+
+### Decoded Network Data
+```http
+
+```
+
+### Forensic Context
+* **Log Path:** ` `
+* **Capture File:** ` `
+* **Flow ID:** ` `
+* **Rule UUID:** ` `
+* **Rule Reference:** ` `
+
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sv%20script%20alert.png)
 
 
 
 
 ### Alert for nmap -O 192.168.35.0/24
+# Security Onion Incident Report
+
+| Attribute | Value |
+| :--- | :--- |
+| **Timestamp** | ` ` |
+| **Alert Signature** | ` ` |
+| **Category** | ` ` |
+| **Severity** | ` ` |
+
+---
+
+## Network Data
+* **Source IP / Port:** ` ` : ` `
+* **Destination IP / Port:** ` ` : ` `
+* **Protocol:** ` `
+* **Interface:** ` `
+
+---
+
+## Log & Payload Extract
+
+### Decoded Network Data
+```http
+
+```
+
+### Forensic Context
+* **Log Path:** ` `
+* **Capture File:** ` `
+* **Flow ID:** ` `
+* **Rule UUID:** ` `
+* **Rule Reference:** ` `
+
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20o%20alert.png)
 
 

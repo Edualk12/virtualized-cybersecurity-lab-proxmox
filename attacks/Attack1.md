@@ -404,8 +404,6 @@ Host is up (0.00066s latency).
 
 - nmap sn alert
 
- ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sn%20alert.png)
-
 - st alert
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20st%20alert.png)
 

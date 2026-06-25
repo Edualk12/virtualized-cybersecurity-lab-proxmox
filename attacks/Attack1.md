@@ -1,5 +1,8 @@
 
-## Objective
+# MITRE ATT&CK Mapping
+### T1046 - Network Service Scanning
+
+### Objective
 To test the cybersecurity lab's functionality and test different attack methodologies.
 
 ## Environment
@@ -7,8 +10,6 @@ To test the cybersecurity lab's functionality and test different attack methodol
 - Target: Victim Network (192.168.35.0/24)
 - Monitoring: Security Onion, Splunk
 
-## MITRE ATT&CK Mapping
-### T1046 - Network Service Scanning
 
 ## Attack Execution
 
@@ -22,8 +23,23 @@ To test the cybersecurity lab's functionality and test different attack methodol
   
 - Screenshot
 
-  
-  ![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sn.png)
+```
+┌──(klaude㉿klaudekali)-[~]
+└─$ nmap -sn 192.168.35.0/24 
+
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-25 02:42 +0800
+Nmap scan report for 192.168.35.1
+Host is up (0.0010s latency).
+Nmap scan report for 192.168.35.10
+Host is up (0.0010s latency).
+Nmap scan report for 192.168.35.11
+Host is up (0.0028s latency).
+Nmap scan report for 192.168.35.12
+Host is up (0.00098s latency).
+Nmap done: 256 IP addresses (4 hosts up) scanned in 4.47 seconds
+
+```
+
   
 ### 2.) Check for Open Ports
 - Commands used
@@ -39,13 +55,138 @@ To test the cybersecurity lab's functionality and test different attack methodol
   
 - Screenshot
 
+```
+┌──(klaude㉿klaudekali)-[~]
+└─$ nmap -sT 192.168.35.0/24
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-25 02:49 +0800
+Nmap scan report for 192.168.35.1
+Host is up (0.0024s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+53/tcp  open  domain
+80/tcp  open  http
+443/tcp open  https
 
-  ![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20st.png)
+Nmap scan report for 192.168.35.10
+Host is up (0.0084s latency).
+Not shown: 987 closed tcp ports (conn-refused)
+PORT     STATE SERVICE
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+5357/tcp open  wsdapi
+5985/tcp open  wsman
 
-  ![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20ss.png)
-  
-  ![nmap](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20p.png)
-    
+Nmap scan report for 192.168.35.11
+Host is up (0.015s latency).
+All 1000 scanned ports on 192.168.35.11 are in ignored states.
+Not shown: 1000 closed tcp ports (conn-refused)
+
+Nmap scan report for 192.168.35.12
+Host is up (0.0036s latency).
+Not shown: 997 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+Nmap done: 256 IP addresses (4 hosts up) scanned in 9.24 seconds
+```
+
+```
+┌──(klaude㉿klaudekali)-[~]
+└─$ nmap -sS 192.168.35.0/24
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-25 2:52 +0800
+Nmap scan report for 192.168.35.1
+Host is up (0.00068s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+53/tcp  open  domain
+80/tcp  open  http
+443/tcp open  https
+
+Nmap scan report for 192.168.35.10
+Host is up (0.00084s latency).
+Not shown: 987 closed tcp ports (reset)
+PORT     STATE SERVICE
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+5357/tcp open  wsdapi
+5985/tcp open  wsman
+
+Nmap scan report for 192.168.35.11
+Host is up (0.00096s latency).
+All 1000 scanned ports on 192.168.35.11 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+
+Nmap scan report for 192.168.35.12
+Host is up (0.00074s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+Nmap done: 256 IP addresses (4 hosts up) scanned in 8.88 seconds
+```
+
+```
+┌──(klaude㉿klaudekali)-[~]
+└─$ nmap -p 22,80,443 192.168.35.0/24
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-25 02:53 +0800
+Nmap scan report for 192.168.35.1
+Host is up (0.0016s latency).
+
+PORT    STATE    SERVICE
+22/tcp  filtered ssh
+80/tcp  open     http
+443/tcp open     https
+
+Nmap scan report for 192.168.35.10
+Host is up (0.0015s latency).
+
+PORT    STATE  SERVICE
+22/tcp  closed ssh
+80/tcp  closed http
+443/tcp closed https
+
+Nmap scan report for 192.168.35.11
+Host is up (0.00067s latency).
+
+PORT    STATE  SERVICE
+22/tcp  closed ssh
+80/tcp  closed http
+443/tcp closed https
+
+Nmap scan report for 192.168.35.12
+Host is up (0.00089s latency).
+
+PORT    STATE  SERVICE
+22/tcp  closed ssh
+80/tcp  closed http
+443/tcp closed https
+
+Nmap done: 256 IP addresses (4 hosts up) scanned in 5.75 seconds
+
+``` 
+      
 
 
 
@@ -59,7 +200,60 @@ To test the cybersecurity lab's functionality and test different attack methodol
 - Findings
 - Screenshot
 
-![nmapsv](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sv%20script.png)
+```
+┌──(klaude㉿klaudekali)-[~]
+└─$ nmap -sV --script=banner 192.168.35.0/24
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-25 03:26 +0800
+Nmap scan report for 192.168.35.1
+Host is up (0.00072s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE SERVICE  VERSION
+53/tcp  open  domain   (generic dns response: REFUSED)
+80/tcp  open  http     nginx
+443/tcp open  ssl/http nginx
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port53-TCP:V=7.99%I=7%D=6/25%Time=6A3D03F0%P=x86_64-pc-linux-gnu%r(DNSV
+SF:ersionBindReqTCP,E,"\0\x0c\0\x06\x81\x05\0\0\0\0\0\0\0\0");
+
+Nmap scan report for 192.168.35.10
+Host is up (0.00077s latency).
+Not shown: 987 closed tcp ports (reset)
+PORT     STATE SERVICE       VERSION
+53/tcp   open  domain        Simple DNS Plus
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-06-25 10:33:15Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: KLAUDE.local, Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+|_banner: ncacn_http/1.0
+636/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: KLAUDE.local, Site: Default-First-Site-Name)
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: KLAUDE.local, Site: Default-First-Site-Name)
+3269/tcp open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: KLAUDE.local, Site: Default-First-Site-Name)
+5357/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+Service Info: Host: KLAUDE-DOMAIN-C; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Nmap scan report for 192.168.35.11
+Host is up (0.00073s latency).
+All 1000 scanned ports on 192.168.35.11 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+
+Nmap scan report for 192.168.35.12
+Host is up (0.00067s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 256 IP addresses (4 hosts up) scanned in 74.03 seconds
+```
 
 ```
   ┌──(klaude㉿klaudekali)-[~]

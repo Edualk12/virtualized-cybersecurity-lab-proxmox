@@ -199,6 +199,13 @@ iface vmbr3 inet manual
 
 ## SIEM and IDS/IPS Dashboards
 
+#### Security Onion
+
+![seconion](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/security%20onion%20ss.png)
+
+#### Proxmox Virtual Environment
+
+1[proxmox]()
 
 ## Problems Encountered
 

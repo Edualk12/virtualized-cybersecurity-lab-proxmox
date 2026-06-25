@@ -36,6 +36,16 @@
 - Splunk
 - Vlans
 
+## Dashboards
+
+### Security Onion
+
+![seconion](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/security%20onion%20ss.png)
+
+### Proxmox Virtual Environment
+
+![proxmox](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/proxmox%20ss.png)
+
 
 
 # Sample Attack Scenarios and Detection Analysis
@@ -197,15 +207,7 @@ iface vmbr3 inet manual
 ```
 
 
-## Dashboards
 
-### Security Onion
-
-![seconion](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/security%20onion%20ss.png)
-
-### Proxmox Virtual Environment
-
-![proxmox](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/proxmox%20ss.png)
 
 ## Problems Encountered
 

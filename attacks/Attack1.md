@@ -10,19 +10,17 @@ To test the cybersecurity lab's functionality and test different attack methodol
 - Target: Victim Network (192.168.35.0/24)
 - Monitoring: Security Onion, Splunk
 
-
 ## Attack Execution
 
 ### 1.) Check for Live Systems
-- Commands used
+  For the very step of the nmap scan I need know how many host are available in the network that I am scanning.
+
+ #### Commands used
   ```
       nmap -sn 192.168.35.0/24
   ```
-  
-- Findings
-  
-- Screenshot
-
+ #### Output:
+ This command performs a quick ping sweep across the subnet to identify which host machines are active and online without scanning their ports. Attackers use these initial discovery findings to map out the network structure and isolate live targets for future exploitatio
 ```
 ┌──(klaude㉿klaudekali)-[~]
 └─$ nmap -sn 192.168.35.0/24 
@@ -39,22 +37,21 @@ Host is up (0.00098s latency).
 Nmap done: 256 IP addresses (4 hosts up) scanned in 4.47 seconds
 
 ```
+ #### Findings
+  The nmap scan was able to detect four active host in the /24 subnet network, with this I am able to go onto the second step.
 
   
 ### 2.) Check for Open Ports
-- Commands used
+
+#### Commands used
   ```
     nmap -sT 192.168.35.0/24 (port scan)
     nmap -sS 192.168.35.0/24 (stealth scan)
     nmap -p 22,80,443 192.168.35.0/24 (specific port scan)
   ```
 
-  
-- Findings
-
-  
-- Screenshot
-
+#### Ouput (Nmap -sT)
+ This output shows that the TCP connect scan discovered two live hosts on the network with vulnerable open entry points. Host 192.168.35.12 is exposing web and remote shell capabilities via SSH, HTTP, and HTTPS, while host 192.168.35.50 is exposing a Remote Desktop (RDP) management port.
 ```
 ┌──(klaude㉿klaudekali)-[~]
 └─$ nmap -sT 192.168.35.0/24
@@ -100,7 +97,13 @@ PORT    STATE SERVICE
 
 Nmap done: 256 IP addresses (4 hosts up) scanned in 9.24 seconds
 ```
+#### Findings (nmap -sT)
+Based on the command I used which is a TCP scan command it was able to perform the 3 way handshake with some of the ports of the different hosts and other ports refused to connect which means the ports of the hosts are closed.
 
+
+
+#### Output (nmap -sS)
+This command functions similarly to the TCP connect scan by actively scanning the target subnet for open ports. However, it provides a more stealthy option by utilizing half-open connections that never fully complete the handshake process on the live hosts.
 ```
 ┌──(klaude㉿klaudekali)-[~]
 └─$ nmap -sS 192.168.35.0/24
@@ -146,7 +149,11 @@ PORT    STATE SERVICE
 
 Nmap done: 256 IP addresses (4 hosts up) scanned in 8.88 seconds
 ```
+#### Findings (nmap -sS)
+The output is similar to the -sS but it was still be able to be detected by Security Onion due to security onion scanning for traffic signatures with the half fired tcp scan being a suspicious pheonomena.
 
+#### Output (nmap -p)
+This is another variation of the -sT command, but it gives you the flexibility to scan only the specific ports you actually care about. Instead of wasting time checking all 1,000 default ports, it zeroes in on your target list, making the scan finish much faster and keeping your network traffic to a minimum.
 ```
 ┌──(klaude㉿klaudekali)-[~]
 └─$ nmap -p 22,80,443 192.168.35.0/24
@@ -187,18 +194,21 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 5.75 seconds
 
 ``` 
       
-
+#### Findings (mmap -p)
+Same as Before It was able to find the inputed ports (22,80,443) which for the majority of the hosts are closed. Except for pfsense default gateway.
 
 
 
  ### 3.) Perform Banner Grabbing
-- Commands used
+#### Commands used
   ```
-  nmap -O 192.168.35.0/24 (for os detection )
   nmap -sV --script=banner 192.168.35.0/24 (for  service version detection)
+  nmap -O 192.168.35.0/24 (for os detection )
   ```
-- Findings
-- Screenshot
+  
+#### Output (nmap -sV)
+
+This command scans all 254 active network hosts in the 192.168.35.0/24 subnet to identify open ports and determine their exact application names and software versions. It also extracts the raw welcome text ("banners") broadcasted by those services, creating a detailed profile that will instantly trigger alerts in security monitoring tools like Security Onion.
 
 ```
 ┌──(klaude㉿klaudekali)-[~]
@@ -254,6 +264,9 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 256 IP addresses (4 hosts up) scanned in 74.03 seconds
 ```
+
+#### Findings
+This version detection scan uses Nmap Scripting Engine (NSE) scripts to dig deeper, specifically running the banner script to grab the raw welcome text from open services. These automated NSE scripts act like plugins that extend Nmap's capability beyond basic port checking, allowing it to accurately unmask an Nginx gateway, a Windows Active Directory Domain Controller, and a host on this subnet.
 
 ```
   ┌──(klaude㉿klaudekali)-[~]

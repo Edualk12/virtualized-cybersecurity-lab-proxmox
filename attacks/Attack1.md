@@ -930,7 +930,7 @@ Alert Screenshot
 * **Interface:** `bond0`
 
 ## Findings
-  This Alert shows  that Security Onion was able to detect that this is a Nmap Scripting engine and due to this script being used for searching for any vulnerability it was able to detect the brute force root login attempts and as the same as the nmap scans before it was able to detect suspicious traffic in multiple ports.
+  This Alert shows  that Security Onion was able to detect that this is a Nmap Scripting engine and due to this script being used for searching for any vulnerability it was able to detect the brute force root login attempts and as the same as the nmap scans before it was able to detect suspicious traffic in multiple ports and due to it being an aggressive form of a scan its severity was classified as HIGH.
   
 ---
 

@@ -48,6 +48,7 @@
 
 ### Splunk
 
+![splunk](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/splunk%20dashboard.png)
 
 # Sample Attack Scenarios and Detection Analysis
 

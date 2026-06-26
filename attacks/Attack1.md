@@ -400,6 +400,13 @@ This shows some of the open port and services that are available in the previous
   
 #### Output
    This is another example of a Nmap Script Engine which in this case automates to look for any vulnerabilities on the host.Th is command weaponizes Nmap to look for known security flaws, bugs, and misconfigurations.  
+
+   -Step 1: **Pings** the network to locate active host machines.
+   -Step 2: **Scans for open ports** to find available entry points.
+   -Step 3: **Grabs service banners** to identify exact software versions.
+   -Step 4: **Matches vulnerability scripts** specifically to those discovered applications.
+   -Step 5: **Probes for security flaws** and actively brute-forces default credentials.
+   
 ```    
 ┌┌──(user㉿kali)-[~]
 └─$ nmap -sV --script=vuln 192.168.35.0/24
@@ -930,8 +937,43 @@ Alert Screenshot
 * **Interface:** `bond0`
 
 ## Findings
-  This Alert shows  that Security Onion was able to detect that this is a Nmap Scripting engine and due to this script being used for searching for any vulnerability it was able to detect the brute force root login attempts and as the same as the nmap scans before it was able to detect suspicious traffic in multiple ports and due to it being an aggressive form of a scan its severity was classified as HIGH.
-  
+  This Alert shows  that Security Onion was able to detect that this is a Nmap Scripting engine and due to this script being used for searching for any vulnerability it was able to detect the brute force root login attempts and as the same as the nmap scans before it was able to detect suspicious traffic in multiple ports and due to it being an aggressive form of a scan its severity was classified as HIGH. This also matched the steps the script performs
+
+-Step 1: **Pings** the network to locate active host machines.
+   ```
+| **Alert Signature 1** | `GPL SCAN PING NMAP` 
+| **Timestamp 1** | `2026-06-26 18:06:27.137 +08:00` |
+| **Alert Signature 2** | `ET SCAN NMAP -sS window 1024` |
+| **Timestamp 2** | `2026-06-26 18:06:30.796 +08:00` |
+   ```
+
+
+-Step 2: **Scans for open ports** to find available entry points.
+-Step 3: **Grabs service banners** to identify exact software versions.
+
+  ```
+    | **Alert Signature 3** | `ET SCAN Suspicious inbound to PostgreSQL port 5432` |
+    | **Alert Signature 4** | `ET SCAN Suspicious inbound to mySQL port 3306` |
+    | **Timestamp 3** | `2026-06-26 18:06:47.834 +08:00` |
+    | **Timestamp 4** | `2026-06-26 18:07:25.670 +08:00` |
+ ```
+
+
+   
+-Step 4: **Matches vulnerability scripts** specifically to those discovered applications.
+
+```
+  | **Alert Signature 5** | `ET SCAN Nmap Scripting Engine User-Agent Detected (Nmap Scripting Engine)` |
+  | **Timestamp 5** | `2026-06-26 18:07:30.997 +08:00` |
+```
+   
+   -Step 5: **Probes for security flaws** and actively brute-forces default credentials.
+```
+      | **Alert Signature 7** | `ET SCAN MYSQL 4.1 brute force root login attempt` |
+      | **Alert Signature 8** | `ET SCAN Multiple MySQL Login Failures Possible Brute Force Attempt` |
+      | **Timestamp 6** | `2026-06-26 18:08:17.875 +08:00` |
+      | **Timestamp 7** | `2026-06-26 18:08:35.529 +08:00` |
+```  
 ---
 
 ### Mitigation

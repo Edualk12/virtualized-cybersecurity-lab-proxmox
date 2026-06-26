@@ -681,6 +681,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 412.62 seconds
 
                                                                     
 ```
+---
 #### Findings
 
 
@@ -698,10 +699,9 @@ Using Zenmap to able to be able to visualize the network being scanned.
 #### Alert Tab Screenshot
 ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/sample%20ss%20secu%20onion.png)
 
-
+---
 
 ### Alert for nmap -sN 192.168.35.0/24
-
 
 
 | Attribute | Value |
@@ -711,7 +711,6 @@ Using Zenmap to able to be able to visualize the network being scanned.
 | **Category** | ` Attempted Information Leak ` |
 | **Severity** | ` Medium ` |
 
----
 
 ### Network Data
 * **Source IP / Port:** ` 192.168.1.89 ` : ` `
@@ -719,67 +718,38 @@ Using Zenmap to able to be able to visualize the network being scanned.
 * **Protocol:** ` TCP `
 * **Interface:** ` bond0 `
 
----
-
-### Log & Payload Extract
-
-### Decoded Network Data
-```http
-
-```
-
-### Forensic Context
-* **Log Path:** ` `
-* **Capture File:** ` `
-* **Flow ID:** ` `
-* **Rule UUID:** ` `
-* **Rule Reference:** ` `
 
 Alert Screenshot
 ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20sn%20alert.png)
 
 
+---
 
-
-## Alert for nmap -st 192.168.35.0/24
+## Alert for nmap -sT 192.168.35.0/24
 
 ### Security Onion Incident Report
 
 | Attribute | Value |
 | :--- | :--- |
-| **Timestamp** | ` ` |
-| **Alert Signature** | ` ` |
-| **Category** | ` ` |
-| **Severity** | ` ` |
+| **Timestamp** | `2026-06-25 02:49:43.297 +08:00` |
+| **Alert Signature** | `GPL SCAN PING NMAP` |
+| **Category** | `Attempted Information Leak` |
+| **Severity** | `medium` |
 
 ---
 
 ### Network Data
-* **Source IP / Port:** ` ` : ` `
-* **Destination IP / Port:** ` ` : ` `
-* **Protocol:** ` `
-* **Interface:** ` `
 
----
+* **Source IP:** `192.168.1.89`
+* **Destination IP:** `192.168.35.10`
+* **Protocol:** `ICMP`
+* **Interface:** `bond0`
 
-### Log & Payload Extract
-
-### Decoded Network Data
-```http
-
-```
-
-### Forensic Context
-* **Log Path:** ` `
-* **Capture File:** ` `
-* **Flow ID:** ` `
-* **Rule UUID:** ` `
-* **Rule Reference:** ` `
 
 Alert Screenshot
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20st%20alert.png)
 
-
+--- 
 
 ## Alert for nmap -sS 192.168.35.0/24
 
@@ -792,7 +762,6 @@ Alert Screenshot
 | **Category** | ` Attempted Information Leak ` |
 | **Severity** | ` medium ` |
 
----
 
 ### Network Data
 * **Source IP / Port:** ` 192.168.1.89 ` : ` 59849 `
@@ -800,27 +769,12 @@ Alert Screenshot
 * **Protocol:** ` TCP `
 * **Interface:** `bond0 `
 
----
-
-### Log & Payload Extract
-
-### Decoded Network Data
-```http
-
-```
-
-### Forensic Context
-* **Log Path:** ` `
-* **Capture File:** ` `
-* **Flow ID:** ` `
-* **Rule UUID:** ` `
-* **Rule Reference:** ` `
 
 Alert Screenshot
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20ss%20alert.png)
 
 
-
+--- 
 
 ## Alert for nmap -sV 192.168.35.0/24
 ### Security Onion Incident Report
@@ -844,35 +798,16 @@ Alert Screenshot
 | **Category 5** | `Attempted Information Leak ` |
 | **Severity** | ` medium ` |
 
----
-
 ### Network Data
 * **Source IP / Port:** ` 192.168.1.89 ` : `  62278 `
 * **Destination IP / Port:** ` 192.168.35.10-12 ` : `1433,5432,32776,	7435 `
 * **Protocol:** `TCP `
 * **Interface:** `bond0 `
 
----
-
-### Log & Payload Extract
-
-### Decoded Network Data
-```http
-
-```
-
-### Forensic Context
-* **Log Path:** ` `
-* **Capture File:** ` `
-* **Flow ID:** ` `
-* **Rule UUID:** ` `
-* **Rule Reference:** ` `
-
 Alert Screenshot
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20alert%20sv.png)
 
-
-
+ --- 
 
 ## Alert for nmap -O 192.168.35.0/24
 ### Security Onion Incident Report
@@ -892,7 +827,7 @@ Alert Screenshot
 | **Category 4** | `Attempted Information Leak` |
 | **Severity** | `medium` |
 
----
+
 
 ### Network Data
 * **Source IP / Port:** `192.168.1.89` : `50498`
@@ -900,25 +835,12 @@ Alert Screenshot
 * **Protocol:** `TCP`
 * **Interface:** ` bond0 `
  
----
-
-### Log & Payload Extract
-
-### Decoded Network Data
-```http
-
-```
-
-### Forensic Context
-* **Log Path:** ` `
-* **Capture File:** ` `
-* **Flow ID:** ` `
-* **Rule UUID:** ` `
-* **Rule Reference:** ` `
 
 Alert Screenshot
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20o%20alert.png)
 
+
+--- 
 
 ## Alert for  nmap -sV --script=vuln 192.168.35.0/24
 
@@ -948,7 +870,7 @@ Alert Screenshot
 | **Category 4** | `Generic Protocol Command Decode` |
 | **Severity** | `high` |
 
----
+
 
 ### Network Data
 
@@ -957,6 +879,7 @@ Alert Screenshot
 * **Protocol:** `TCP`
 * **Interface:** `bond0`
 
+---
 
 ### Mitigation
 

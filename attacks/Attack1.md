@@ -42,7 +42,10 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 4.47 seconds
  #### Findings
   The nmap scan was able to detect four active host in the 192.168.35.0/24 subnet network, with this I am able to go onto the second step.
 
-  
+ - Host 1: 192.168.35.1
+ - Host 2: 192.168.35.10
+ - Host 3: 192.168.35.11
+ - Host 4: 192.168.35.12
 ### 2.) Check for Open Ports
 
 #### Commands used
@@ -86,8 +89,30 @@ PORT     STATE SERVICE
 
 Nmap scan report for 192.168.35.11
 Host is up (0.015s latency).
-All 1000 scanned ports on 192.168.35.11 are in ignored states.
-Not shown: 1000 closed tcp ports (conn-refused)
+Not shown: 979 closed tcp ports (conn-refused)
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+23/tcp   open  telnet
+25/tcp   open  smtp
+53/tcp   open  domain
+80/tcp   open  http
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+512/tcp  open  exec
+513/tcp  open  login
+514/tcp  open  shell
+1099/tcp open  rmiregistry
+1524/tcp open  ingreslock
+2121/tcp open  ccproxy-ftp
+3306/tcp open  mysql
+5432/tcp open  postgresql
+5900/tcp open  vnc
+6000/tcp open  X11
+6667/tcp open  irc
+8009/tcp open  ajp13
+8180/tcp open  unknown
+
 
 Nmap scan report for 192.168.35.12
 Host is up (0.0036s latency).
@@ -100,7 +125,7 @@ PORT    STATE SERVICE
 Nmap done: 256 IP addresses (4 hosts up) scanned in 9.24 seconds
 ```
 #### Findings (nmap -sT)
-This findings shows that the TCP connect scan discovered two live hosts on the network with vulnerable open entry points. Host 192.168.35.12 is exposing web and remote shell capabilities via SSH, HTTP, and HTTPS, while host 192.168.35.50 is exposing a Remote Desktop (RDP) management port.
+This findings shows that the TCP connect scan discovered two live hosts on the network with vulnerable open entry points. Host 192.168.35.12 is exposing web and remote shell capabilities via SSH, HTTP, and HTTPS. While Host 192.168.35.11 has the majority of its ports open.
 
 
 
@@ -180,8 +205,8 @@ Nmap scan report for 192.168.35.11
 Host is up (0.00067s latency).
 
 PORT    STATE  SERVICE
-22/tcp  closed ssh
-80/tcp  closed http
+22/tcp  open   ssh
+80/tcp  open   http
 443/tcp closed https
 
 Nmap scan report for 192.168.35.12
@@ -897,6 +922,40 @@ Alert Screenshot
 
 ## Alert for  nmap -sV --script=vuln 192.168.35.0/24
 
+
+### Security Onion Incident Report Unique Entries
+
+| Attribute | Value |
+| :--- | :--- |
+| **Timestamp 1** | `2026-06-26 18:06:27.137 +08:00` |
+| **Timestamp 2** | `2026-06-26 18:06:30.796 +08:00` |
+| **Timestamp 3** | `2026-06-26 18:06:47.834 +08:00` |
+| **Timestamp 4** | `2026-06-26 18:07:25.670 +08:00` |
+| **Timestamp 5** | `2026-06-26 18:07:30.997 +08:00` |
+| **Timestamp 6** | `2026-06-26 18:08:17.875 +08:00` |
+| **Timestamp 7** | `2026-06-26 18:08:35.529 +08:00` |
+| **Alert Signature 1** | `GPL SCAN PING NMAP` |
+| **Alert Signature 2** | `ET SCAN NMAP -sS window 1024` |
+| **Alert Signature 3** | `ET SCAN Suspicious inbound to PostgreSQL port 5432` |
+| **Alert Signature 4** | `ET SCAN Suspicious inbound to mySQL port 3306` |
+| **Alert Signature 5** | `ET SCAN Nmap Scripting Engine User-Agent Detected (Nmap Scripting Engine)` |
+| **Alert Signature 6** | `ET SCAN Possible Nmap User-Agent Observed` |
+| **Alert Signature 7** | `ET SCAN MYSQL 4.1 brute force root login attempt` |
+| **Alert Signature 8** | `ET SCAN Multiple MySQL Login Failures Possible Brute Force Attempt` |
+| **Category 1** | `Attempted Information Leak` |
+| **Category 2** | `Potentially Bad Traffic` |
+| **Category 3** | `Web Application Attack` |
+| **Category 4** | `Generic Protocol Command Decode` |
+| **Severity** | `high` |
+
+---
+
+### Network Data
+
+* **Source IP / Port:** `192.168.1.89` : `34858, 37196, 43676, 48762, 52487`
+* **Destination IP / Port:** `192.168.35.10-12` : `1244, 3306, 3814, 5357, 5432, 5985, 8180`
+* **Protocol:** `TCP`
+* **Interface:** `bond0`
 
 
 ### Mitigation

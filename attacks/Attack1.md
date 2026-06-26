@@ -299,11 +299,11 @@ This version detection scan uses Nmap Scripting Engine (NSE) scripts to dig deep
 #### Output
 This command is used specifically to see what type of Operating do the hosts use which can be later be utilized to what kind of exploit should be used against each host in the subnet.
 ```
-  ┌──(klaude㉿klaudekali)-[~]
-└─$ nmap -O 192.168.35.0/24
-Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-25 03:44 +0800
+┌──(klaude㉿klaudekali)-[~]
+└─$ nmap -O 192.168.35.0/24               
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-26 18:42 +0800
 Nmap scan report for 192.168.35.1
-Host is up (0.00072s latency).
+Host is up (0.0012s latency).
 Not shown: 997 filtered tcp ports (no-response)
 PORT    STATE SERVICE
 53/tcp  open  domain
@@ -317,7 +317,7 @@ Aggressive OS guesses: FreeBSD 11.2-RELEASE (97%)
 No exact OS matches for host (test conditions non-ideal).
 
 Nmap scan report for 192.168.35.10
-Host is up (0.0014s latency).
+Host is up (0.0015s latency).
 Not shown: 987 closed tcp ports (reset)
 PORT     STATE SERVICE
 53/tcp   open  domain
@@ -340,14 +340,38 @@ OS details: Microsoft Windows Server 2022
 Network Distance: 3 hops
 
 Nmap scan report for 192.168.35.11
-Host is up (0.00091s latency).
-All 1000 scanned ports on 192.168.35.11 are in ignored states.
-Not shown: 1000 closed tcp ports (reset)
-Too many fingerprints match this host to give specific OS details
+Host is up (0.00086s latency).
+Not shown: 979 closed tcp ports (reset)
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+23/tcp   open  telnet
+25/tcp   open  smtp
+53/tcp   open  domain
+80/tcp   open  http
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+512/tcp  open  exec
+513/tcp  open  login
+514/tcp  open  shell
+1099/tcp open  rmiregistry
+1524/tcp open  ingreslock
+2121/tcp open  ccproxy-ftp
+3306/tcp open  mysql
+5432/tcp open  postgresql
+5900/tcp open  vnc
+6000/tcp open  X11
+6667/tcp open  irc
+8009/tcp open  ajp13
+8180/tcp open  unknown
+Device type: general purpose
+Running: Linux 2.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6
+OS details: Linux 2.6.15 - 2.6.26 (likely embedded), Linux 2.6.29
 Network Distance: 3 hops
 
 Nmap scan report for 192.168.35.12
-Host is up (0.00093s latency).
+Host is up (0.0014s latency).
 Not shown: 997 closed tcp ports (reset)
 PORT    STATE SERVICE
 135/tcp open  msrpc
@@ -360,7 +384,8 @@ OS details: Microsoft Windows 10 1903 - 22H2
 Network Distance: 3 hops
 
 OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 256 IP addresses (4 hosts up) scanned in 15.77 seconds
+Nmap done: 256 IP addresses (4 hosts up) scanned in 18.24 seconds
+
 
 ```
 #### Findings
@@ -713,10 +738,11 @@ Using Zenmap to able to be able to visualize the network being scanned.
 
 
 ### Network Data
-* **Source IP / Port:** ` 192.168.1.89 ` : ` `
-* **Destination IP / Port:** `192.168.36.10-12 ` : ` `
+* **Source IP / Port:** ` 192.168.1.89 ` 
+* **Destination IP / Port:** `192.168.36.10-12 ` 
 * **Protocol:** ` TCP `
 * **Interface:** ` bond0 `
+
 
 
 Alert Screenshot
@@ -745,6 +771,8 @@ Alert Screenshot
 * **Protocol:** `ICMP`
 * **Interface:** `bond0`
 
+## Findings
+  This Alert shows correctly that nmap used ICMP to be able to scan the network and the alert was correct about the ip address of the intruded and it set its severity to medium and as an Attempted Information leak.
 
 Alert Screenshot
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20st%20alert.png)
@@ -769,6 +797,10 @@ Alert Screenshot
 * **Protocol:** ` TCP `
 * **Interface:** `bond0 `
 
+## Findings
+  This Alert shows another Attempted information leak from the nmap but now it has an Alert of Window 1024 which means because when sending nmap probing packets they used the window size of 1024 which legit operating system rarely used this packet size for initialization of 1024 it is flagged immediately.
+
+  
 
 Alert Screenshot
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20ss%20alert.png)
@@ -776,7 +808,7 @@ Alert Screenshot
 
 --- 
 
-## Alert for nmap -sV 192.168.35.0/24
+## Alert for nmap -sV script=banner 192.168.35.0/24
 ### Security Onion Incident Report
 
 | Attribute | Value |
@@ -804,36 +836,54 @@ Alert Screenshot
 * **Protocol:** `TCP `
 * **Interface:** `bond0 `
 
+## Findings
+  This Alert shows multiple alerts or scans and due to it checking for available services and version detection it goes to different ports and the IDS was able to detect suspicious packets inbound of ports 1433 and 5432.
+  
+
+
 Alert Screenshot
  ![alert](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/nmap%20alert%20sv.png)
 
  --- 
 
 ## Alert for nmap -O 192.168.35.0/24
+
 ### Security Onion Incident Report
+
 | Attribute | Value |
 | :--- | :--- |
-| **Timestamp 1** | `2026-06-26 17:38:14.046 +08:00` |
-| **Timestamp 2** | `2026-06-26 17:38:16.613 +08:00` |
-| **Timestamp 3** | `2026-06-26 17:38:16.994 +08:00` |
-| **Timestamp 4** | `2026-06-26 17:38:17.302 +08:00` |
+| **Timestamp 1** | `2026-06-26 18:42:30.493 +08:00` |
+| **Timestamp 2** | `2026-06-26 18:42:33.217 +08:00` |
+| **Timestamp 3** | `2026-06-26 18:42:35.326 +08:00` |
+| **Timestamp 4** | `2026-06-26 18:42:35.334 +08:00` |
+| **Timestamp 5** | `2026-06-26 18:42:36.248 +08:00` |
 | **Alert Signature 1** | `GPL SCAN PING NMAP` |
 | **Alert Signature 2** | `ET SCAN NMAP -sS window 1024` |
-| **Alert Signature 3** | `ET SCAN Suspicious inbound to MSSQL port 1433` |
-| **Alert Signature 4** | `ET SCAN NMAP -sS window 1024` |
+| **Alert Signature 3** | `ET SCAN Suspicious inbound to mySQL port 3306` |
+| **Alert Signature 4** | `ET SCAN Suspicious inbound to Oracle SQL port 1521` |
 | **Category 1** | `Attempted Information Leak` |
-| **Category 2** | `Attempted Information Leak` |
-| **Category 3** | `Potentially Bad Traffic` |
-| **Category 4** | `Attempted Information Leak` |
+| **Category 2** | `Potentially Bad Traffic` |
 | **Severity** | `medium` |
 
-
+---
 
 ### Network Data
-* **Source IP / Port:** `192.168.1.89` : `50498`
-* **Destination IP / Port:** `192.168.35.11-12` : `993,1433,1658`
+
+* **Source IP:** `192.168.1.89`
+* **Destination IP(s):** `192.168.35.10-12`
+* **Source Port:** `63499`
+* **Destination Port(s):** `111, 1521, 3306`
 * **Protocol:** `TCP`
-* **Interface:** ` bond0 `
+* **Interface:** `bond0`
+
+
+
+## Findings
+  This Alert shows multiple alerts similar to 'nmap -sV script=banner' it goes to different ports and the IDS was able to detect suspicious packets inbound of ports 3306, 1521 which are for mySQL and Oracle SQL port respectively and used them as high probability target 
+  
+-Port 1521 (Oracle SQL): This port is heavily associated with enterprise database servers. These servers often run on specific platforms like Oracle Linux, Red Hat (RHEL), or Windows Server.
+
+-Port 3306 (MySQL): MySQL is the most common open-source database in the world. It runs extensively on Linux web servers (LAMP stacks) or Windows machines (WAMP stacks).
  
 
 Alert Screenshot
@@ -879,6 +929,9 @@ Alert Screenshot
 * **Protocol:** `TCP`
 * **Interface:** `bond0`
 
+## Findings
+  This Alert shows  that Security Onion was able to detect that this is a Nmap Scripting engine and due to this script being used for searching for any vulnerability it was able to detect the brute force root login attempts and as the same as the nmap scans before it was able to detect suspicious traffic in multiple ports.
+  
 ---
 
 ### Mitigation
@@ -893,5 +946,4 @@ Alert Screenshot
 This exercise showed how reconnaissance activity can be detected in a monitored network. It helped me understand how traffic flows through pfSense, Open vSwitch, and Security Onion, and how IDS alerts are generated from real attack activity.
 
 -Validated end-to-end attack detection using Security Onion.
--Confirmed proper VLAN and SPAN configuration.
 -Improved understanding of network monitoring and intrusion detection.

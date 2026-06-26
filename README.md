@@ -202,19 +202,23 @@ iface vmbr3 inet manual
 
 
 
-
 ## Problems Encountered
 
-- The Problem: I could ping outward from my VMs to my physical PC, and I could ping the pfSense WAN port from the outside, but I couldn't actually ping into the internal VM network from my physical PC.
-
-- The Root Cause: My main home router was completely blind to the VM subnet. When my PC tried to talk to a VM, the router didn't even consider the pfSense WAN interface as an option—it just assumed the traffic was meant for the internet and dropped it.
-
-- The Fix: I added a static route on my main home router telling it exactly how to find the VM subnet via the pfSense WAN IP, and opened up a firewall rule on pfSense to let the traffic cross over to the LAN.
-
-- metapsplitable is not compatible with peroxmox
-
-- Limited resources for the different virtual machines
+* Fixed VM network access by adding a static route and updating pfSense firewall rules.
+* Ran into compatibility issues with Metasploitable on Proxmox.
+* Worked around limited CPU and RAM while running multiple VMs.
+* Fixed the SPAN port so mirrored traffic reached Security Onion.
 
 ## Lessons Learned
 
+* Learned how SIEM and IDS monitor, collect, and analyze network traffic.
+* Gained hands-on experience setting up and configuring virtual machines.
+* Learned to configure pfSense firewall rules for inbound and outbound traffic.
+* Learned how to build and manage VLANs in a virtualized environment.
+
 ## Future Improvements
+
+* Allocate more CPU and RAM, especially for Security Onion and Splunk.
+* Add more vulnerable VMs to simulate a wider range of attacks.
+* Expand the lab with additional attack scenarios and detection rules.
+

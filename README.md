@@ -46,6 +46,7 @@
 
 ![proxmox](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/proxmox%20ss.png)
 
+### Splunk
 
 
 # Sample Attack Scenarios and Detection Analysis

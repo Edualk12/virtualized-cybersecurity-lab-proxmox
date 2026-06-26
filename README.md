@@ -46,7 +46,7 @@
 
 ![proxmox](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/proxmox%20ss.png)
 
-### Splunk
+### Splunk Dashboard
 
 ![splunk](https://github.com/Edualk12/virtualized-cybersecurity-lab-proxmox/blob/main/images/splunk%20dashboard.png)
 
